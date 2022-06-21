@@ -16,6 +16,8 @@
 		D2BD8D5028604D3700A486A4 /* ChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D4F28604D3700A486A4 /* ChessTests.swift */; };
 		D2BD8D5A28604D3700A486A4 /* ChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D5928604D3700A486A4 /* ChessUITests.swift */; };
 		D2BD8D5C28604D3700A486A4 /* ChessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D5B28604D3700A486A4 /* ChessUITestsLaunchTests.swift */; };
+		D2BD8D6928604D7C00A486A4 /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D6828604D7C00A486A4 /* Chess.swift */; };
+		D2BD8D6B2860742A00A486A4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D6A2860742A00A486A4 /* Piece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D2BD8D5528604D3700A486A4 /* ChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BD8D5928604D3700A486A4 /* ChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITests.swift; sourceTree = "<group>"; };
 		D2BD8D5B28604D3700A486A4 /* ChessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D2BD8D6828604D7C00A486A4 /* Chess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
+		D2BD8D6A2860742A00A486A4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		D2BD8D3728604D3600A486A4 /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				D2BD8D6828604D7C00A486A4 /* Chess.swift */,
+				D2BD8D6A2860742A00A486A4 /* Piece.swift */,
 				D2BD8D3828604D3600A486A4 /* AppDelegate.swift */,
 				D2BD8D3A28604D3600A486A4 /* SceneDelegate.swift */,
 				D2BD8D3C28604D3600A486A4 /* ViewController.swift */,
@@ -258,7 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BD8D6928604D7C00A486A4 /* Chess.swift in Sources */,
 				D2BD8D3D28604D3600A486A4 /* ViewController.swift in Sources */,
+				D2BD8D6B2860742A00A486A4 /* Piece.swift in Sources */,
 				D2BD8D3928604D3600A486A4 /* AppDelegate.swift in Sources */,
 				D2BD8D3B28604D3600A486A4 /* SceneDelegate.swift in Sources */,
 			);
