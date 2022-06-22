@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20EA4932862F3B100BB4C06 /* ChessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EA4922862F3B100BB4C06 /* ChessError.swift */; };
 		D2BD8D3928604D3600A486A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D3828604D3600A486A4 /* AppDelegate.swift */; };
 		D2BD8D3B28604D3600A486A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D3A28604D3600A486A4 /* SceneDelegate.swift */; };
 		D2BD8D3D28604D3600A486A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D3C28604D3600A486A4 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20EA4922862F3B100BB4C06 /* ChessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessError.swift; sourceTree = "<group>"; };
 		D2BD8D3528604D3600A486A4 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BD8D3828604D3600A486A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2BD8D3A28604D3600A486A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				D2BD8D6828604D7C00A486A4 /* Chess.swift */,
 				D2BD8D6A2860742A00A486A4 /* Piece.swift */,
+				D20EA4922862F3B100BB4C06 /* ChessError.swift */,
 				D2BD8D3828604D3600A486A4 /* AppDelegate.swift */,
 				D2BD8D3A28604D3600A486A4 /* SceneDelegate.swift */,
 				D2BD8D3C28604D3600A486A4 /* ViewController.swift */,
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2BD8D6928604D7C00A486A4 /* Chess.swift in Sources */,
+				D20EA4932862F3B100BB4C06 /* ChessError.swift in Sources */,
 				D2BD8D3D28604D3600A486A4 /* ViewController.swift in Sources */,
 				D2BD8D6B2860742A00A486A4 /* Piece.swift in Sources */,
 				D2BD8D3928604D3600A486A4 /* AppDelegate.swift in Sources */,
