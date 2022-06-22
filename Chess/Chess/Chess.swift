@@ -8,7 +8,6 @@
 import Foundation
 
 class Chess {
-
     private var board = [[Piece]](repeating: Array(repeating: Piece(color: .none, type: .none),count: 8), count: 8)
     private var turn: Color = .white
     
@@ -38,8 +37,30 @@ class Chess {
         return result
     }
     
-    func showGuide(command: String) -> [String] {
-        let startPoint: Point = Point(point: String(command.suffix(2)))
+    func perform(command: String) -> Bool {
+        guard let commandData = CommandManager.getActionData(command: command) else { return false }
+
+        switch commandData.type {
+        case .guide:
+            if let data = commandData.data as? GuideData, let startPoint = data.startPoint {
+                print(showGuide(startPoint: startPoint))
+                return true
+            } else {
+                return false
+            }
+        case .move:
+            if let data = commandData.data as? MoveData, let startPoint = data.startPoint, let endPoint = data.endPoint {
+                return performMoveAction(startPoint: startPoint, endPoint: endPoint)
+            } else {
+                return false
+            }
+        case .invalid:
+            ChessError.showErrorMessage(errorType: .wrongCommand)
+            return false
+        }
+    }
+
+    private func showGuide(startPoint: Point) -> [String] {
         let piece = board[startPoint.y][startPoint.x]
         
         // 말이 갈 수 있는 포인트 중 막히지 않은 칸만 필터링
@@ -48,10 +69,7 @@ class Chess {
         return convertedPoints
     }
     
-    func action(command: String) -> Bool {
-        let startPoint: Point = Point(point: String(command.prefix(2)))
-        let endPoint: Point = Point(point: String(command.suffix(2)))
-        
+    private func performMoveAction(startPoint: Point, endPoint: Point) -> Bool {
         // 해당 타입의 말의 이동방식으로 갈 수있는 칸인지 검사 && 도착지까지의 루트에 아군말이 있는지 검사
         let isAvailable = check(from: startPoint, to: endPoint)
         
@@ -66,7 +84,7 @@ class Chess {
         return isAvailable
     }
     
-    func check(from startPoint: Point, to endPoint: Point) -> Bool {
+    private func check(from startPoint: Point, to endPoint: Point) -> Bool {
         // 해당 타입의 말의 이동방식으로 갈 수있는 칸인지 검사
         var isAvailable = board[startPoint.y][startPoint.x].checkMoving(from: startPoint, to: endPoint)
         // 도착지 전까지의 루트에 말이 있는지 검사 (아군/적군 있으면 이동 불가)
@@ -77,7 +95,7 @@ class Chess {
     }
 
     // 도착지 상태 확인 (빈칸 / 아군 / 적군)
-    func checkEndpoint(point: Point) -> Bool {
+    private func checkEndpoint(point: Point) -> Bool {
         var isAvailable: Bool
         
         let previousPiece: Piece = board[point.y][point.x]
@@ -95,7 +113,7 @@ class Chess {
     }
     
     // 도착지 전까지의 루트에 말이 있는지 검사 (아군/적군 있으면 이동 불가)
-    func checkRoute(from startPoint: Point, to endPoint: Point) -> Bool {
+    private func checkRoute(from startPoint: Point, to endPoint: Point) -> Bool {
         var isAvailable: Bool = true
         let piece = board[startPoint.y][startPoint.x]
         let route = piece.getRoute(from: startPoint, to: endPoint)
@@ -110,12 +128,12 @@ class Chess {
         return isAvailable
     }
 
-    func move(from startPoint: Point, to endPoint: Point) {
+    private func move(from startPoint: Point, to endPoint: Point) {
         board[endPoint.y][endPoint.x] = board[startPoint.y][startPoint.x]
         board[startPoint.y][startPoint.x] = Piece(color: .none, type: .none)
     }
     
-    func showScore() -> (Int, Int) {
+    private func showScore() -> (Int, Int) {
         let flattenedArray = board.flatMap { $0 }
         let whiteScore = flattenedArray.filter { $0.color == .white }.map { $0.type.score }.reduce(0, +)
         let blackScore = flattenedArray.filter { $0.color == .black }.map { $0.type.score }.reduce(0, +)
