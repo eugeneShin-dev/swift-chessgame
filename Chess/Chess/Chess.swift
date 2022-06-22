@@ -18,6 +18,8 @@ class Chess {
     func reset() {
         let order: [PieceType] = [.luke, .knight, .bishop, .none, .queen, .bishop, .knight, .luke]
         
+        board = [[Piece]](repeating: Array(repeating: Piece(color: .none, type: .none),count: 8), count: 8)
+        
         for rank in 0..<8 {
             board[0][rank] = Piece(color: .black, type: order[rank])
             board[1][rank] = Piece(color: .black, type: .pawn)
