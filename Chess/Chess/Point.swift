@@ -32,6 +32,14 @@ struct Point {
         self.y = y
         self.x = x
     }
+
+    init?(y: Int, x: Int) throws {
+        if let x = X(rawValue: x) {
+            self.init(y: y, x: x)
+        } else {
+            throw PointError.invalidFormat
+        }
+    }
     
     init?(string: String) {
         guard let point = try? Point.getValidPoint(string: string) else { return nil }

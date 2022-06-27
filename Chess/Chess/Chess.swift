@@ -27,6 +27,10 @@ class Chess {
             board[7][rank] = Piece(color: .white, type: order[rank])
         }
     }
+
+    func getPiece(point: Point) -> Piece {
+        return board[point.y][point.x.rawValue]
+    }
     
     func display() -> String {
         var result = ""

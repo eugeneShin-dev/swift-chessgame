@@ -5,6 +5,8 @@
 //  Created by Hailey on 2022/06/20.
 //
 
+import UIKit
+
 enum Color {
     case black, white, none
 }
@@ -100,7 +102,7 @@ class Piece {
         case .queen:
             return color == .white ? "\u{2655}" : "\u{265B}"
         case .none:
-            return "."
+            return ""
         }
     }()
 

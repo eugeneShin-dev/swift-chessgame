@@ -21,6 +21,7 @@
 		D2BD8D5C28604D3700A486A4 /* ChessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D5B28604D3700A486A4 /* ChessUITestsLaunchTests.swift */; };
 		D2BD8D6928604D7C00A486A4 /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D6828604D7C00A486A4 /* Chess.swift */; };
 		D2BD8D6B2860742A00A486A4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D6A2860742A00A486A4 /* Piece.swift */; };
+		D2CF551628699196001FAB36 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CF551528699196001FAB36 /* SquareCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		D2BD8D5B28604D3700A486A4 /* ChessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D2BD8D6828604D7C00A486A4 /* Chess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
 		D2BD8D6A2860742A00A486A4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		D2CF551528699196001FAB36 /* SquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +116,10 @@
 				D20EA4B22863112600BB4C06 /* Point.swift */,
 				D20EA4962862F62700BB4C06 /* Command.swift */,
 				D20EA4922862F3B100BB4C06 /* ChessError.swift */,
+				D2CF551528699196001FAB36 /* SquareCell.swift */,
+				D2BD8D3C28604D3600A486A4 /* ViewController.swift */,
 				D2BD8D3828604D3600A486A4 /* AppDelegate.swift */,
 				D2BD8D3A28604D3600A486A4 /* SceneDelegate.swift */,
-				D2BD8D3C28604D3600A486A4 /* ViewController.swift */,
 				D2BD8D3E28604D3600A486A4 /* Main.storyboard */,
 				D2BD8D4128604D3700A486A4 /* Assets.xcassets */,
 				D2BD8D4328604D3700A486A4 /* LaunchScreen.storyboard */,
@@ -279,6 +282,7 @@
 				D2BD8D3D28604D3600A486A4 /* ViewController.swift in Sources */,
 				D2BD8D6B2860742A00A486A4 /* Piece.swift in Sources */,
 				D2BD8D3928604D3600A486A4 /* AppDelegate.swift in Sources */,
+				D2CF551628699196001FAB36 /* SquareCell.swift in Sources */,
 				D2BD8D3B28604D3600A486A4 /* SceneDelegate.swift in Sources */,
 				D20EA4972862F62700BB4C06 /* Command.swift in Sources */,
 			);
