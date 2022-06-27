@@ -118,8 +118,12 @@ class Piece {
             var nextPosition = startPoint
             
             for _ in 0..<type.moveLimit {
-                guard nextPosition.move(offsetX: type.getOffsetX[index], offsetY: type.getOffsetY(color: color)[index]) else { break }
-                possiblePoints.append(nextPosition)
+                do {
+                    try nextPosition.move(offsetX: type.getOffsetX[index], offsetY: type.getOffsetY(color: color)[index])
+                    possiblePoints.append(nextPosition)
+                } catch {
+                    break
+                }
             }
         }
         
@@ -136,16 +140,26 @@ class Piece {
     func getRoute(from startPoint: Point, to endPoint: Point) -> [Point] {
         var route: [Point] = []
 
-        let offsetY = startPoint.y - endPoint.y
-        let directionY = offsetY / abs(offsetY)
-
-        let offsetX = startPoint.x - endPoint.x
-        let directionX = offsetX / abs(offsetX)
+        var offsetY = endPoint.y - startPoint.y
         
+        if abs(offsetY) > 1 {
+            offsetY = offsetY / abs(offsetY)
+        }
+
+        var offsetX = endPoint.x - startPoint.x
+        
+        if abs(offsetX) > 1 {
+            offsetX = offsetX / abs(offsetX)
+        }
+
         var nextPoint = startPoint
         
         while(nextPoint != endPoint) {
-            guard nextPoint.move(offsetX: directionY, offsetY: directionX) else { break }
+            do {
+                try nextPoint.move(offsetX: offsetX, offsetY: offsetY)
+            } catch {
+                break
+            }
 
             if nextPoint != endPoint {
                 route.append(nextPoint)
