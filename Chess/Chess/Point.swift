@@ -5,61 +5,88 @@
 //  Created by Hailey on 2022/06/22.
 //
 
-struct Point: Equatable {
+import Foundation
+
+enum PointError: LocalizedError {
+    case invalidFormat
+    case indexOutOfRange
+}
+
+struct Point {
+    
+    enum X: Int {
+        case A, B, C, D, E, F, G, H
+        
+        static func - (lhs: Self, rhs: Self) -> Int {
+            return lhs.rawValue - rhs.rawValue
+        }
+    }
+    
+    private static let yDefault: UInt8 = Character("1").asciiValue ?? 1
+    private static let xDefault: UInt8 = Character("A").asciiValue ?? 1
 
     var y: Int
-    var x: Int
+    var x: X
     
-    init(string: String) {
-        self.y = (Int(String(string.last ?? "0")) ?? 0) - 1
-        self.x = Int((UnicodeScalar(String(string.first ?? "0"))?.value ?? 0) - 65)
+    init(y: Int, x: X) {
+        self.y = y
+        self.x = x
+    }
+    
+    init?(string: String) {
+        guard let point = try? Point.getValidPoint(string: string) else { return nil }
+        self.init(y: point.y, x: point.x)
     }
 
     // 유효한 좌표인지 확인
-    static func checkCoordinate(string: String) -> Bool {
-        let yString: String? = String(string.last ?? Character.init(""))
-        let xString: String? = String(string.first ?? Character.init(""))
-        
-        guard let yString = yString, let xString = xString else { return false }
-
-        let y = (Int(yString) ?? 0) - 1
-        let x = Int(UnicodeScalar(xString)?.value ?? 0) - 65
-        
-        let isValid = checkIndexOutOfRange(y: y, x: x)
-        
-        if !isValid {
-            ChessError.showErrorMessage(errorType: .invalidCoordinate)
+    static private func getValidPoint(string: String) throws -> Point {
+        guard string.count == 2,
+              let yValue = string.last?.asciiValue,
+              let xValue = string.first?.asciiValue else {
+                    throw PointError.invalidFormat
         }
         
-        return isValid
+        let y = Int(yValue - yDefault)
+        let x = Int(xValue - (Character("A").asciiValue ?? 65))
+        
+        try checkRangeOfIndex(y: y, x: x)
+        
+        if let x = X(rawValue: x) {
+            return Point(y: y, x: x)
+        } else {
+            throw PointError.invalidFormat
+        }
     }
 
-    // 이동 시 인덱스 체크
-    static func checkIndexOutOfRange(y: Int, x: Int) -> Bool {
-        if 0 <= x && x < 8 && 0 <= y && y < 8 {
-            return true
-        } else {
-            return false
+    static private func checkRangeOfIndex(y: Int, x: Int) throws {
+        if x < 0 || x >= 8 || y < 0 || y >= 8 {
+            throw PointError.indexOutOfRange
         }
     }
 
     func convertToString() -> String {
-        if let xString = UnicodeScalar(x + 65) {
-            let yString = "\(y + 1)"
-            return "\(String(describing: xString))\(yString)"
-        } else {
-            return ""
-        }
+        let xString = "\(x)"
+        let yString = "\(y + 1)"
+        return "\(String(describing: xString))\(yString)"
     }
     
-    mutating func move(offsetX: Int, offsetY: Int) -> Bool {
-        let nx = x + offsetX
+    mutating func move(offsetX: Int, offsetY: Int) throws {
+        let nx = x.rawValue + offsetX
         let ny = y + offsetY
         
-        guard Point.checkIndexOutOfRange(y: ny, x: nx) else { return false }
+        try Point.checkRangeOfIndex(y: ny, x: nx)
         
-        self.x = nx
-        self.y = ny
-        return true
+        if let nx = X(rawValue: nx) {
+            self.x = nx
+            self.y = ny
+        } else {
+            throw PointError.invalidFormat
+        }
+    }
+}
+
+extension Point: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.y == rhs.y && lhs.x == rhs.x
     }
 }

@@ -44,15 +44,15 @@ class Chess {
 
         switch commandData.type {
         case .guide:
-            if let data = commandData.data as? GuideData, let startPoint = data.startPoint {
-                print(showGuide(startPoint: startPoint))
+            if let data = commandData.data as? GuideData {
+                print(showGuide(startPoint: data.startPoint))
                 return true
             } else {
                 return false
             }
         case .move:
-            if let data = commandData.data as? MoveData, let startPoint = data.startPoint, let endPoint = data.endPoint {
-                return performMoveAction(startPoint: startPoint, endPoint: endPoint)
+            if let data = commandData.data as? MoveData {
+                return performMoveAction(startPoint: data.startPoint, endPoint: data.endPoint)
             } else {
                 return false
             }
@@ -63,7 +63,7 @@ class Chess {
     }
 
     private func showGuide(startPoint: Point) -> [String] {
-        let piece = board[startPoint.y][startPoint.x]
+        let piece = board[startPoint.y][startPoint.x.rawValue]
         
         // 말이 갈 수 있는 포인트 중 막히지 않은 칸만 필터링
         let possiblePoints = piece.getPossiblePoints(startPoint: startPoint).filter { check(from: startPoint, to: $0) && checkEndpoint(point: $0) }
@@ -100,7 +100,7 @@ class Chess {
     private func checkEndpoint(point: Point) -> Bool {
         var isAvailable: Bool
         
-        let previousPiece: Piece = board[point.y][point.x]
+        let previousPiece: Piece = board[point.y][point.x.rawValue]
         
         if previousPiece.type == .none { // 빈 칸
             isAvailable = true
@@ -117,11 +117,11 @@ class Chess {
     // 도착지 전까지의 루트에 말이 있는지 검사 (아군/적군 있으면 이동 불가)
     private func checkRoute(from startPoint: Point, to endPoint: Point) -> Bool {
         var isAvailable: Bool = true
-        let piece = board[startPoint.y][startPoint.x]
+        let piece = board[startPoint.y][startPoint.x.rawValue]
         let route = piece.getRoute(from: startPoint, to: endPoint)
         
         route.forEach { point in
-            if board[point.y][point.x].type != .none {
+            if board[point.y][point.x.rawValue].type != .none {
                 isAvailable = false
                 return
             }
@@ -131,8 +131,9 @@ class Chess {
     }
 
     private func move(from startPoint: Point, to endPoint: Point) {
-        board[endPoint.y][endPoint.x] = board[startPoint.y][startPoint.x]
-        board[startPoint.y][startPoint.x] = Piece(color: .none, type: .none)
+    func move(from startPoint: Point, to endPoint: Point) {
+        board[endPoint.y][endPoint.x.rawValue] = board[startPoint.y][startPoint.x.rawValue]
+        board[startPoint.y][startPoint.x.rawValue] = Piece(color: .none, type: .none)
     }
     
     private func showScore() -> (Int, Int) {
