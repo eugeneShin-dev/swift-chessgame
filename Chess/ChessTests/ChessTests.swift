@@ -46,7 +46,27 @@ class ChessTests: XCTestCase {
                     ♖♘♗.♕♗♘♖
                     """
         XCTAssertEqual(chess.display(), board)
-        XCTAssertEqual(chess.perform(command: "A1->D1"), false)
+    }
+
+    func testPointMethods() {
+        XCTAssertEqual(Point.convertIndexToPoint(8), Point(y: 1, x: .A))
+        XCTAssertEqual(Point.convertPointToIndex(Point(y: 1, x: .A)), 8)
+        XCTAssertEqual(Point.convertPointToIndex(Point(y: 1, x: .H)), 15)
+    }
+
+    func testGettingPiece() {
+        let chess = Chess()
+        guard let point1 = Point(string: "A1") else { return }
+        XCTAssertEqual(chess.getPiece(of: point1), Piece(color: .black, type: .luke, isCandidate: false))
+    }
+
+    func testSelectingWrongPointInInitial() {
+        let chess = Chess()
+        guard let pointWithWrongColor = Point(string: "B1") else { return }
+        XCTAssertThrowsError(try chess.selectPoint(point: pointWithWrongColor))
+
+        guard let emptyPoint = Point(string: "C5") else { return }
+        XCTAssertThrowsError(try chess.selectPoint(point: emptyPoint))
     }
 
     func testPerformanceExample() throws {

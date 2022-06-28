@@ -16,6 +16,7 @@ class SquareCell: UICollectionViewCell {
     private let markLabel: UILabel = {
         let label: UILabel = UILabel(frame: .zero)
         label.textAlignment = .center
+        label.font = .systemFont(ofSize: 40)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -26,6 +27,8 @@ class SquareCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAutoLayout()
+        contentView.layer.borderWidth = 0.7
+        contentView.layer.borderColor = UIColor.black.cgColor
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +36,12 @@ class SquareCell: UICollectionViewCell {
     }
 
     func update(point: Point, piece: Piece) {
-        contentView.backgroundColor = getBackgroundColor(of: point)
+        if piece.isCandidate {
+            contentView.backgroundColor = UIColor.systemTeal
+        } else {
+            contentView.backgroundColor = getBackgroundColor(of: point)
+        }
+
         markLabel.text = piece.mark
     }
 

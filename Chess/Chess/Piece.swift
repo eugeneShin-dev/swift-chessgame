@@ -84,12 +84,13 @@ enum PieceType {
     }
 }
 
-class Piece {
+struct Piece: Equatable {
 
     var color: Color = .none
     var type: PieceType = .none
+    var isCandidate: Bool = false
     
-    lazy var mark: String = {
+    var mark: String {
         switch type {
         case .pawn:
             return color == .white ? "\u{2659}" : "\u{265F}"
@@ -104,11 +105,12 @@ class Piece {
         case .none:
             return ""
         }
-    }()
+    }
 
-    init(color: Color, type: PieceType) {
+    init(color: Color, type: PieceType, isCandidate: Bool) {
         self.color = color
         self.type = type
+        self.isCandidate = isCandidate
     }
     
     // 갈 수 있는 모든 칸 찾기 (현재 보드판 상황과 무관)
