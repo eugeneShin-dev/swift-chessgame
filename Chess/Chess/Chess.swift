@@ -43,22 +43,6 @@ class Chess {
         return result
     }
     
-    func perform(command: String) -> Bool {
-        guard let commandData = CommandManager.getActionData(command: command) else { return false }
-
-        switch commandData.type {
-        case .guide:
-            if let data = commandData.data as? GuideData {
-                print(showGuide(startPoint: data.startPoint))
-                return true
-            } else {
-                return false
-            }
-        case .move:
-            if let data = commandData.data as? MoveData {
-                return performMoveAction(startPoint: data.startPoint, endPoint: data.endPoint)
-            } else {
-                return false
             }
         case .invalid:
             ChessError.showErrorMessage(errorType: .wrongCommand)

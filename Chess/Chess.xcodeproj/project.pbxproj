@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D20EA4932862F3B100BB4C06 /* ChessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EA4922862F3B100BB4C06 /* ChessError.swift */; };
-		D20EA4972862F62700BB4C06 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EA4962862F62700BB4C06 /* Command.swift */; };
 		D20EA4B32863112600BB4C06 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EA4B22863112600BB4C06 /* Point.swift */; };
 		D2BD8D3928604D3600A486A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D3828604D3600A486A4 /* AppDelegate.swift */; };
 		D2BD8D3B28604D3600A486A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD8D3A28604D3600A486A4 /* SceneDelegate.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		D20EA4922862F3B100BB4C06 /* ChessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessError.swift; sourceTree = "<group>"; };
-		D20EA4962862F62700BB4C06 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		D20EA4B22863112600BB4C06 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		D2BD8D3528604D3600A486A4 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BD8D3828604D3600A486A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				D2BD8D6828604D7C00A486A4 /* Chess.swift */,
 				D2BD8D6A2860742A00A486A4 /* Piece.swift */,
 				D20EA4B22863112600BB4C06 /* Point.swift */,
-				D20EA4962862F62700BB4C06 /* Command.swift */,
 				D20EA4922862F3B100BB4C06 /* ChessError.swift */,
 				D2CF551528699196001FAB36 /* SquareCell.swift */,
 				D2BD8D3C28604D3600A486A4 /* ViewController.swift */,
@@ -284,7 +281,6 @@
 				D2BD8D3928604D3600A486A4 /* AppDelegate.swift in Sources */,
 				D2CF551628699196001FAB36 /* SquareCell.swift in Sources */,
 				D2BD8D3B28604D3600A486A4 /* SceneDelegate.swift in Sources */,
-				D20EA4972862F62700BB4C06 /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
